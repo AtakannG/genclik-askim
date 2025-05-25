@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gençlik Aşkım 💖</title>
+    <style>
+        body {
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        img {
+            width: 300px;
+        }
+        .balloon {
+            background: #fff;
+            display: inline-block;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 20px;
+            border: 2px solid #ccc;
+            max-width: 400px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #video-container {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gençlik Aşkım 💖</h1>
+    <img src="https://placekitten.com/400/400" alt="Beyaz Kedi">
+    <div class="balloon" id="message">
+        merhaba Gamze umarım buralara kadar sıkıntısız gelmişizdir
+    </div>
+    <div>
+        <button id="nextBtn">İleri gitmek için tıklayın</button>
+    </div>
+    <div id="choices" style="display:none;">
+        <button id="yesBtn">Evet</button>
+        <button id="noBtn">Hayır</button>
+    </div>
+    <div id="video-container">
+        <video width="500" controls>
+            <source src="YOUR_VIDEO_LINK.mp4" type="video/mp4">
+            Tarayıcınız videoyu desteklemiyor.
+        </video>
+    </div>
+
+    <script>
+        const messages = [
+            "seninle bu kadar yıl geçirdiğim için çok mutluyum ve daha da geçirmek istiyorum",
+            "hazır mısın"
+        ];
+        let step = 0;
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (step < messages.length) {
+                document.getElementById('message').innerText = messages[step];
+                step++;
+                if (step === messages.length) {
+                    document.getElementById('nextBtn').style.display = 'none';
+                    document.getElementById('choices').style.display = 'block';
+                }
+            }
+        });
+
+        document.getElementById('yesBtn').addEventListener('click', () => {
+            document.getElementById('choices').style.display = 'none';
+            document.getElementById('message').innerText = "💍💖";
+            document.getElementById('video-container').style.display = 'block';
+        });
+
+        document.getElementById('noBtn').addEventListener('click', () => {
+            document.getElementById('message').innerText = "😢 Üzgünüm...";
+            document.getElementById('choices').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
